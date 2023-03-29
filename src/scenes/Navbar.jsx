@@ -20,10 +20,10 @@ const Link = ({ page, selectedPage, setSelectedPage }) => {
 const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }) => {
   const [isMenuToggled, setIsMenuToggled] = useState(false);
   const isDesktop = useMediaQuery("(min-width: 768px)");
-  // const navbarBackground = isTopOfPage ? "" : "bg-red";
+  const navbarBackground = isTopOfPage ? "" : "bg-red";
 
   return (
-    <nav className={`z-40 w-full fixed top-0 py-6`}>
+    <nav className={`${navbarBackground} z-40 w-full fixed top-0 py-6`}>
       <div className="flex items-center justify-between mx-auto w-5/6">
         <h4 className="font-playfair text-3xl font-bold">IL</h4>
 
@@ -31,13 +31,80 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }) => {
         {isDesktop ? (
           <div className="flex justify-between gap-16 font-opensans text-sm font-semibold">
             <Link
-              page="Home"
+              page="HOME"
               selectedPage={selectedPage}
               setSelectedPage={setSelectedPage}
             />
-            
+            <Link
+              page="SKILLS"
+              selectedPage={selectedPage}
+              setSelectedPage={setSelectedPage}
+            />
+            <Link
+              page="PROJECTS"
+              selectedPage={selectedPage}
+              setSelectedPage={setSelectedPage}
+            />
+            <Link
+              page="TESTIMONIALS"
+              selectedPage={selectedPage}
+              setSelectedPage={setSelectedPage}
+            />
+            <Link
+              page="CONTACT"
+              selectedPage={selectedPage}
+              setSelectedPage={setSelectedPage}
+            />
           </div>
-        ) : (<div></div>)}
+        ) : (
+          <button
+            className="rounded-full bg-red p-2"
+            onCLick={() => setIsMenuToggled(!isMenuToggled)}
+          >
+            <img src="../assets/menu-icon.svg" alt="menu-icon" />
+          </button>
+        )}
+
+        {/* MOBILE MENU POPUP */}
+        {!isDesktop && isMenuToggled && (
+          <div className="fixed right-0 bottom-0 h-full bg-blue w-[300px]">
+            {/* CLOSE ICON */}
+            <div className="flex justify-end p-12">
+              <button onClick={setIsMenuToggled(!isMenuToggled)}>
+                <img src="../assets/close-icon.svg" alt="close-icon" />
+              </button>
+            </div>
+
+            {/* MENU ITEMS */}
+            <div className="flex flex-col gap-10 ml-[33%] text-2xl text-deep-blue">
+              <Link
+                page="HOME"
+                selectedPage={selectedPage}
+                setSelectedPage={setSelectedPage}
+              />
+              <Link
+                page="SKILLS"
+                selectedPage={selectedPage}
+                setSelectedPage={setSelectedPage}
+              />
+              <Link
+                page="PROJECTS"
+                selectedPage={selectedPage}
+                setSelectedPage={setSelectedPage}
+              />
+              <Link
+                page="TESTIMONIALS"
+                selectedPage={selectedPage}
+                setSelectedPage={setSelectedPage}
+              />
+              <Link
+                page="CONTACT"
+                selectedPage={selectedPage}
+                setSelectedPage={setSelectedPage}
+              />
+            </div>
+          </div>
+        )}
       </div>
     </nav>
   );

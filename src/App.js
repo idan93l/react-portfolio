@@ -6,7 +6,8 @@ function App() {
   const isAboveMediaQuery = useMediaQuery("(min-width: 1060px)");
 
   return (
-    <div className="app ">
+    <div className="app bg-deep-blue ">
+      <Navbar selectedPage={selectedPage} set={selectedPage}/>
     </div>
   );
 }

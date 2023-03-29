@@ -5,7 +5,7 @@ import Navbar from "./scenes/Navbar";
 
 function App() {
   const [selectedPage, setSelectedPage] = useState("home");
-  const isAboveMediaQuery = useMediaQuery("(min-width: 1060px)");
+  const isDesktop = useMediaQuery("(min-width: 1060px)");
 
   return (
     <div className="app bg-deep-blue ">
